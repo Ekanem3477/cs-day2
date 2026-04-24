@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CS-Sprint Day 2 Calculator</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            max-width: 400px; 
+            margin: 50px auto; 
+            padding: 20px;
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+        h1 { color: #38bdf8; }
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+        button {
+            background: #38bdf8;
+            color: #0f172a;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover { background: #0ea5e9; }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #1e293b;
+            border-radius: 8px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>=== CS-Sprint Calculator ===</h1>
+    
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+    
+    <select id="operation">
+        <option value="add">Add</option>
+        <option value="subtract">Subtract</option>
+        <option value="multiply">Multiply</option>
+        <option value="divide">Divide</option>
+    </select>
+    
+    <button onclick="calculate()">Calculate</button>
+    
+    <div id="result">Result will appear here</div>
+
+    <script>
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operation = document.getElementById('operation').value;
+            let result;
+            
+            if (isNaN(num1) || isNaN(num2)) {
+                result = "Error: Enter both numbers";
+            } else if (operation === 'add') {
+                result = num1 + num2;
+            } else if (operation === 'subtract') {
+                result = num1 - num2;
+            } else if (operation === 'multiply') {
+                result = num1 * num2;
+            } else if (operation === 'divide') {
+                if (num2 === 0) {
+                    result = "Error: Cannot divide by zero";
+                } else {
+                    result = num1 / num2;
+                }
+            }
+            
+            document.getElementById('result').innerText = "Result: " + result;
+        }
+    </script>
+</body>
+</html>
